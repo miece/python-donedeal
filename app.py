@@ -107,19 +107,33 @@ def glanza():
     keyInfo=[]
     county=[]
 
+"""
+    for each in result['ads']:
+        if(each['age'].endswith("mins")):
+            if(each['age'].endswith("days")):
+                days = each['age'][:-4]
+                if(int(days) < 11):
+                    option_list.append(each['header'])
+                    description.append(each['description'])
+                    photo.append(each['photos'][0]['small'])
+                    price.append(each['price'])
+                    age.append(each['age'])
+                    keyInfo.append(each['keyInfo'])
+                    county.append(each['county'])
+"""
 
     for each in result['ads']:
-        if(each['age'].endswith("days")):
-            days = each['age'][:-4]
-            if(int(days) < 11):
-                option_list.append(each['header'])
-                description.append(each['description'])
-                photo.append(each['photos'][0]['small'])
-                price.append(each['price'])
-                age.append(each['age'])
-                keyInfo.append(each['keyInfo'])
-                county.append(each['county'])
-   
+        if(each['age'].endswith("mins")):
+            if(each['age'].endswith("days")):
+                days = each['age'][:-4]
+                if(int(days) < 11):
+                    option_list.append(each['header'])
+                    description.append(each['description'])
+                    photo.append(each['photos'][0]['small'])
+                    price.append(each['price'])
+                    age.append(each['age'])
+                    keyInfo.append(each['keyInfo'])
+                    county.append(each['county'])   
 
     cars =  zip(option_list, description, photo, price, age, keyInfo, county)
 
