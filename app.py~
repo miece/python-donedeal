@@ -1,0 +1,53 @@
+from flask import Flask, render_template, request
+import json
+import requests
+
+
+app = Flask(__name__)
+
+
+
+
+@app.route("/")
+def main():
+
+    url = 'https://www.donedeal.ie/search/api/v4/find/?'
+    #payload = {'source':'trade','section':'cars','adType':'forsale','sort':'relevance #desc','priceType':'Euro','mileageType':'Kilometres','area':['Kilkenny'],'max':30,'start':0,'dependant':[]}
+
+    payload = {"words":"levin","area":["Ireland"],"section":"all","adType":"forsale","sort":"publishdate desc","priceType"
+:"Euro","mileageType":"Kilometres","max":30,"start":0}
+    headers = {'content-type': 'application/json'}
+    r = requests.post(url, data=json.dumps(payload), headers=headers)
+
+    result = r.json()
+
+    option_list=[]
+    description=[]
+    photo=[]
+
+    #for each in result['ads']:
+        #print each['photos'][0]['small']
+    #print result
+
+    for cur in result['ads']:
+        #print cur['header']
+        option_list.append(cur['header'])
+
+    for cur in result['ads']:
+        #print cur['description']
+        description.append(cur['description'])
+
+    for cur in result['ads']:
+        #print cur['description']
+        print(cur['photos'][0]['small'])
+
+
+    return render_template('index.html', option_list = option_list, description=description, photo=photo)
+
+@app.route("/test", methods=['GET','POST'])
+def test():
+    select = request.form.get('option')
+    return(str(select))
+
+if __name__ == "__main__":
+    app.run()

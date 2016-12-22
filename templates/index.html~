@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Python DoneDeal </title>
+
+    <!--link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"-->
+ 
+    <!--link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet"-->
+
+</head>
+
+<body>
+
+<h3><table><form method="POST" action="{{ url_for('test') }}">
+    <td>
+        <select name="option" width = "300px">
+            {%for o in option_list%}
+                <option value="{{ o }}" SELECTED>{{ o }}</option>
+            {%endfor%}
+        </select>
+    </td>
+    <td>
+      <input class="button1" type="submit" value="Select">
+    </td>
+</table>
+
+<!--
+{%for description in description%}
+    {{description}}
+{%endfor%}-->
+
+
+{%for photos in photo%}
+    <img src='{{photo}}'/>
+{%endfor%}
+
+
+</body>
+ 
+</html>

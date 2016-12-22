@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<!--
+<h3><table><form method="POST" action="{{ url_for('test') }}">
+    <td>
+        <select name="option" width = "300px">
+            {%for o in option_list%}
+                <option value="{{ o }}" SELECTED>{{ o }}</option>
+            {%endfor%}
+        </select>
+    </td>
+    <td>
+      <input class="button1" type="submit" value="Select">
+    </td>
+</table>
+-->
+
+
+<table class ="table table-bordered table-hover">
+<tr>
+<th>Name</th> 
+<th>Description</th>
+<th>Photo</th>
+<tr>
+{% for row in cars %}
+<tr>
+       <td>{{ row[0] }}</td>
+       <td>{{ row[1] }}</td>
+       <td><img src="{{ row[2] }}"></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
