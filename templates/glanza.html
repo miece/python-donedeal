@@ -17,17 +17,25 @@
 -->
 
 
-<table class ="table table-bordered table-hover">
+<table class= "table table-bordered table-hover">
 <tr>
 <th>Name</th> 
 <th>Description</th>
 <th>Photo</th>
+<th>Price</th>
+<th>Age</th>
+<th>Miles</th>
+<th>County</th>
 <tr>
 {% for row in cars %}
 <tr>
        <td>{{ row[0] }}</td>
        <td>{{ row[1] }}</td>
        <td><img src="{{ row[2] }}"></td>
+       <td>{{row[3]}}</td>
+       <td>{{row[4]}}</td>
+       <td>{{row[5][2]}}</td>
+       <td>{{row[6]}}</td>
 </tr>
 {% endfor %}
 </table>

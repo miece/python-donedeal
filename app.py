@@ -28,6 +28,11 @@ def main():
     names=[]
     price=[]
     image=[]
+    price=[]
+    age=[]
+    keyInfo=[]
+    county=[]
+    friendlyUrl=[]
     count = 0;
 
     #for each in result['ads']:
@@ -51,15 +56,20 @@ def main():
                 option_list.append(each['header'])
                 description.append(each['description'])
                 photo.append(each['photos'][0]['small'])
+                price.append(each['price'])
+                age.append(each['age'])
+                keyInfo.append(each['keyInfo'])
+                county.append(each['county'])
+                friendlyUrl.append(each['friendlyUrl'])
     car_list.append(option_list)
     #car_list.append(description)
     car_list.append(photo)
 
-    #print car_list
+    print friendlyUrl
 
     #dict_d = {"name":option_list, "description":description, "photo":photo}
 
-    cars =  zip(option_list, description, photo)
+    cars =  zip(option_list, description, photo, price, age, keyInfo, county, friendlyUrl)
 
     #print dict_e
 
@@ -92,6 +102,10 @@ def glanza():
     option_list=[]
     description=[]
     photo=[]
+    price=[]
+    age=[]
+    keyInfo=[]
+    county=[]
 
 
     for each in result['ads']:
@@ -101,9 +115,13 @@ def glanza():
                 option_list.append(each['header'])
                 description.append(each['description'])
                 photo.append(each['photos'][0]['small'])
+                price.append(each['price'])
+                age.append(each['age'])
+                keyInfo.append(each['keyInfo'])
+                county.append(each['county'])
    
 
-    cars =  zip(option_list, description, photo)
+    cars =  zip(option_list, description, photo, price, age, keyInfo, county)
 
 
     return render_template('glanza.html', option_list = option_list, cars=cars)
